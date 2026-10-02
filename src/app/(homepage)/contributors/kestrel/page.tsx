@@ -74,7 +74,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Collins Odogwu",
     background: "Data Analysis",
     email: "collinsodogwu642@gmail.com",
-    linkedin: "https://www.linkedin.com/in/collins-odogwu303",
+    linkedin: "collins-odogwu303",
     avatarGradient: "from-secondary-500 to-tertiary-400",
   },
   {
@@ -83,7 +83,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Global",
     background: "Quality Assurance Engineer / Tester",
     email: "ajibolaowonifari@gmail.com",
-    linkedin: "https://www.linkedin.com/in/ajibola-owonifari",
+    linkedin: "ajibola-owonifari",
     avatarGradient: "from-primary-400 to-secondary-500",
   },
   {
@@ -92,7 +92,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "TechBaby",
     background: "Project Manager / Virtual Assistant",
     email: "eruby4453@gmail.com",
-    linkedin: "https://www.linkedin.com/in/ruth7135",
+    linkedin: "ruth7135",
     avatarGradient: "from-alert-400 to-primary-500",
   },
   {
@@ -125,7 +125,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Ogos",
     background: "Frontend Engineering",
     email: "oparaochaogochukwumercy@gmail.com",
-    linkedin: "https://www.linkedin.com/in/ogochukwu-oparaocha",
+    linkedin: "ogochukwu-oparaocha",
     avatarGradient: "from-primary-500 to-alert-400",
   },
   {
@@ -150,7 +150,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Daniel Ifeanyi",
     background: "Software Engineering",
     email: "danielifeanyi74@gmail.com",
-    linkedin: "https://www.linkedin.com/in/daniel-ifeanyi-b33931325",
+    linkedin: "daniel-ifeanyi-b33931325",
     avatarGradient: "from-blue-500 to-primary-400",
   },
   {
@@ -159,7 +159,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Silvia",
     background: "Customer Support",
     email: "silviaooje@gmail.com",
-    linkedin: "https://www.linkedin.com/in/silviaoje",
+    linkedin: "silviaoje",
     avatarGradient: "from-tertiary-500 to-secondary-400",
   },
   {
@@ -168,7 +168,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Barondev",
     background: "Software Engineering",
     email: "aaronwisdom43@gmail.com",
-    linkedin: "https://www.linkedin.com/in/aaron-wisdom",
+    linkedin: "aaron-wisdom",
     avatarGradient: "from-primary-400 to-blue-500",
   },
   {
@@ -177,7 +177,7 @@ const teamKestrelMembers: TeamMember[] = [
     zeduName: "Fabbenco",
     background: "Backend / Full-Stack / AI Developer",
     email: "fabbenco97@gmail.com",
-    linkedin: "https://www.linkedin.com/in/fabian-muoghalu-37aa7a1a9/",
+    linkedin: "fabian-muoghalu-37aa7a1a9",
     avatarGradient: "from-secondary-500 to-tertiary-400",
   },
 ];
@@ -259,7 +259,7 @@ const TeamKestrelPage = () => {
 
                 {member.linkedin && (
                   <a
-                    href={member.linkedin}
+                    href={`//www.linkedin.com/in/${member.linkedin}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex shrink-0 items-center gap-1 font-medium text-primary-500 transition hover:underline"
@@ -276,7 +276,7 @@ const TeamKestrelPage = () => {
 
       <DynamicFooter
         text="Start Building Structured Learning Today"
-        description="Create organized channels, manage cohorts, and bring AI into your learning environment."
+        description="Create organized channels, manage cohorts, and streamline your learning environment."
       />
     </div>
   );
