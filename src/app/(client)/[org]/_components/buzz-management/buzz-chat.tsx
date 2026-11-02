@@ -11,7 +11,6 @@ import React, {
 import UseChannel from "../../home/channels/hooks/channel-message";
 import { DataContext } from "~/store/GlobalState";
 import { groupMessagesByDate } from "~/utils/group-messages";
-// @ts-ignore
 import InfiniteScroll from "react-infinite-scroll-component";
 import Message from "../ChannelMessage/message";
 import EditMessageBox from "../message-box/edit";
