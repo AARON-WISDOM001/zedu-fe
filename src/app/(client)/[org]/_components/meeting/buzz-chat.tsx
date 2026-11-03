@@ -16,6 +16,7 @@ const ChatSidebar = ({ isOpen, onClose }: ChatSidebarProps) => {
   const { state, dispatch } = useContext(DataContext);
   const { user, buzzChats } = state;
   const [inputValue, setInputValue] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const { id } = useParams();
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -29,15 +30,25 @@ const ChatSidebar = ({ isOpen, onClose }: ChatSidebarProps) => {
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || isSending) return;
 
-    const newMessage = {
-      content: inputValue.trim(),
-    };
+    setIsSending(true);
 
-    const res = await PostRequest(`/buzz/${id}/message`, newMessage);
+    try {
+      const newMessage = {
+        content: inputValue.trim(),
+      };
 
-    setInputValue("");
+      const res = await PostRequest(`/buzz/${id}/message`, newMessage);
+
+      // Only clear input if it hasn't changed since submission started.
+      // If the user typed a new draft while waiting, preserve it.
+      if (inputValue.trim() === newMessage.content) {
+        setInputValue("");
+      }
+    } finally {
+      setIsSending(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -130,10 +141,10 @@ const ChatSidebar = ({ isOpen, onClose }: ChatSidebarProps) => {
           />
           <button
             type="submit"
-            disabled={!inputValue.trim()}
+            disabled={!inputValue.trim() || isSending}
             className={cn(
               "p-2 rounded-full transition-colors",
-              inputValue.trim()
+              (!isSending && inputValue.trim())
                 ? "text-blue-400 hover:bg-zinc-800"
                 : "text-zinc-600"
             )}
