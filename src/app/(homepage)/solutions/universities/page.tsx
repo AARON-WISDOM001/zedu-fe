@@ -117,7 +117,7 @@ const institutionSecurityCards = [
 const comparisonData = {
   withoutTitle: "Without Zedu",
   withoutItems: [
-    "Universities only get email, messaging apps, and LMS tools, making communication scattered",
+    "Universities juggle email, messaging apps, and LMS tools, making communication scattered",
     "Important updates from professors or departments are often lost in crowded inboxes or long discussion threads",
     "Students often don't know where to ask questions about lectures, and finding resources becomes difficult",
     "Professors and teaching assistants juggle multiple tools just to manage communication and collaboration",
