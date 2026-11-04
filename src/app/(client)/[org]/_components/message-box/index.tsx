@@ -124,6 +124,7 @@ const MessageBox = ({
   const [isGifPickerOpen, setIsGifPickerOpen] = useState(false);
   const [showFormatting, setShowformatting] = useState(true);
   const [media, setMedia] = useState<any>([]);
+  const prevMediaRef = useRef(media);
   const [medias, setMedias] = useState<string[]>([]);
   const [uploadingImages, setUploadingImages] = useState<number[]>([]);
   const [isRecording, setIsRecording] = useState(false);
@@ -151,8 +152,15 @@ const MessageBox = ({
   };
 
   useEffect(() => {
+    const prevMedia = prevMediaRef.current;
+    prevMediaRef.current = media;
+
     return () => {
-      media.forEach((image: any) => URL.revokeObjectURL(image.preview));
+      prevMedia.forEach((image: any) => {
+        if (!media.some((m: any) => m.id === image.id)) {
+          URL.revokeObjectURL(image.preview);
+        }
+      });
     };
   }, [media]);
 
@@ -704,13 +712,13 @@ const MessageBox = ({
             />
 
             <div className={`flex gap-3 ${media?.length > 0 ? "mt-3" : ""}`}>
-              {media?.map((file: any, index: number) => (
-                <div key={index} className="relative w-[70px] h-[70px]">
+              {media?.map((file: any) => (
+                <div key={file.id} className="relative w-[70px] h-[70px]">
                   {/* IMAGE PREVIEW */}
                   {file.type === "image" && (
                     <Image
                       src={file.preview}
-                      alt={`Uploaded ${index}`}
+                      alt={`Uploaded ${file.id}`}
                       width={70}
                       height={70}
                       className="w-[70px] h-[70px] rounded-md object-cover border border-primary-400 cursor-pointer"
@@ -747,7 +755,7 @@ const MessageBox = ({
 
                   {/* REMOVE BUTTON */}
                   <button
-                    onClick={() => handleRemoveImage(index)}
+                    onClick={() => handleRemoveImage(file.id)}
                     className="absolute -top-1 -right-2 p-1 bg-gray-500 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center"
                   >
                     <XIcon size={14} />
