@@ -86,7 +86,10 @@ export const PricingComparisonTable = ({
         </div>
       ) : null}
 
-      <Table className="min-w-[680px] table-fixed sm:min-w-[760px]">
+      <Table
+        className="min-w-[680px] table-fixed sm:min-w-[760px]"
+        scrollContainer={false}
+      >
         <colgroup>
           <col className="w-[40%]" />
           {plans.map((plan) => (
